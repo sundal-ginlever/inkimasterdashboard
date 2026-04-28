@@ -241,15 +241,6 @@ export default function App() {
             setBookmarks={setBookmarks}
           />
         )}
-        {tab === "home" && (
-          <HomeSection 
-            runLogs={runLogs} 
-            setRunLogs={setRunLogs} 
-            memos={memos} 
-            setMemos={setMemos} 
-            weatherData={weather}
-          />
-        )}
         {tab === "todo" && (
           <TodoSection 
             todos={todos} setTodos={setTodos} 
