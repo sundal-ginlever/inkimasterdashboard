@@ -251,15 +251,6 @@ export default function App() {
             diary={diary} setDiary={setDiary}
           />
         )}
-        {tab === "home" && (
-          <HomeSection 
-            runLogs={runLogs} setRunLogs={setRunLogs} 
-            memos={memos} setMemos={setMemos} 
-            weatherData={weather}
-            habitHistory={habitHistory}
-            habitChecks={habitChecks}
-          />
-        )}
         {tab === "assets" && (
           <AssetsSection 
             assets={assets} setAssets={setAssets} 
