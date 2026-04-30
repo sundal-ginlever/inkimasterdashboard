@@ -190,7 +190,7 @@ export async function getWalletBalances(wallet, moralisKey) {
       }
 
       case 'KAIA': {
-        const res = await fetch("https://public-en-kairos.node.kaia.io", { 
+        const res = await fetch("https://public-en.node.kaia.io", { 
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "kaia_getBalance", params: [address, "latest"]})

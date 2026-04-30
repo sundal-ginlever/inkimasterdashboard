@@ -117,8 +117,8 @@ export function useSupabaseStore(table, defaultValue, user) {
         } 
         
         // 2. Detect Deleted keys
-        const deletedDate = Object.keys(prevState).find(d => nextState[d] === undefined);
-        if (deletedDate) {
+        const deletedDates = Object.keys(prevState).filter(d => nextState[d] === undefined);
+        for (const deletedDate of deletedDates) {
           const { error } = await supabase.from(table).delete().eq('user_id', user.id).eq('date', deletedDate);
           if (error) throw error;
         }

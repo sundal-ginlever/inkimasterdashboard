@@ -29,7 +29,7 @@ function AssetsDash({ assets, setAssets }) {
   
   const update = () => { 
     if (!form.name || !form.amount) return; 
-    setAssets(p => p.map(a => a.id === editId ? { ...form, amount: Number(form.amount), change: Number(form.change) || 0 } : a)); 
+    setAssets(p => p.map(a => a.id === editId ? { ...form, id: editId, amount: Number(form.amount), change: Number(form.change) || 0 } : a)); 
     setEditId(null); 
   };
   

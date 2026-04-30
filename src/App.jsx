@@ -48,20 +48,20 @@ export default function App() {
 
   const user = session?.user;
 
-  const [todos, setTodos] = useSupabaseStore("todos", DEF_TODOS, user);
-  const [timelogs, setTimelogs] = useSupabaseStore("timelogs", DEF_TIMELOGS, user);
-  const [habitHistory, setHabitHistory] = useSupabaseStore("habit_history", DEF_HABIT_HISTORY, user);
-  const [habitChecks, setHabitChecks] = useSupabaseStore("habit_checks", DEF_HABIT_CHECKS, user);
-  const [runLogs, setRunLogs] = useSupabaseStore("run_logs", DEF_RUN_LOGS, user);
-  const [assets, setAssets] = useSupabaseStore("assets", DEF_ASSETS, user);
-  const [ledger, setLedger] = useSupabaseStore("ledger", DEF_LEDGER, user);
-  const [books, setBooks] = useSupabaseStore("books", DEF_BOOKS, user);
-  const [memos, setMemos] = useSupabaseStore("memos", DEF_MEMOS, user);
-  const [diary, setDiary] = useSupabaseStore("diary", {}, user); // New diary state
-  const [bookmarks, setBookmarks] = useSupabaseStore("bookmarks", [], user);
-  const [cryptoWallets, setCryptoWallets] = useSupabaseStore("crypto_wallets", [], user);
-  const [cryptoBalances, setCryptoBalances] = useSupabaseStore("crypto_balances", [], user);
-  const [cryptoTrackedTokens, setCryptoTrackedTokens] = useSupabaseStore("crypto_tracked_tokens", [
+  const [todos, setTodos] = useSupabaseStore("d_todos", DEF_TODOS, user);
+  const [timelogs, setTimelogs] = useSupabaseStore("d_timelogs", DEF_TIMELOGS, user);
+  const [habitHistory, setHabitHistory] = useSupabaseStore("d_habit_history", DEF_HABIT_HISTORY, user);
+  const [habitChecks, setHabitChecks] = useSupabaseStore("d_habit_checks", DEF_HABIT_CHECKS, user);
+  const [runLogs, setRunLogs] = useSupabaseStore("d_run_logs", DEF_RUN_LOGS, user);
+  const [assets, setAssets] = useSupabaseStore("d_assets", DEF_ASSETS, user);
+  const [ledger, setLedger] = useSupabaseStore("d_ledger", DEF_LEDGER, user);
+  const [books, setBooks] = useSupabaseStore("d_books", DEF_BOOKS, user);
+  const [memos, setMemos] = useSupabaseStore("d_memos", DEF_MEMOS, user);
+  const [diary, setDiary] = useSupabaseStore("d_diary", {}, user);
+  const [bookmarks, setBookmarks] = useSupabaseStore("d_bookmarks", [], user);
+  const [cryptoWallets, setCryptoWallets] = useSupabaseStore("d_crypto_wallets", [], user);
+  const [cryptoBalances, setCryptoBalances] = useSupabaseStore("d_crypto_balances", [], user);
+  const [cryptoTrackedTokens, setCryptoTrackedTokens] = useSupabaseStore("d_crypto_tracked_tokens", [
     { gecko_id: "bitcoin", symbol: "BTC", name: "Bitcoin" },
     { gecko_id: "ethereum", symbol: "ETH", name: "Ethereum" },
     { gecko_id: "tether", symbol: "USDT", name: "Tether" },

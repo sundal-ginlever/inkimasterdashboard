@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card } from "../../common/Card";
 
 export function DailyDiary({ date, content, onSave }) {
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(content || "");
+
+  // Sync text when date/content changes (e.g. navigating days)
+  useEffect(() => {
+    setText(content || "");
+    setIsEditing(false);
+  }, [date, content]);
 
   const handleToggleEdit = () => {
     if (isEditing) {

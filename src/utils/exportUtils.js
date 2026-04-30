@@ -20,6 +20,7 @@ export const downloadCSV = (filename, headers, rows) => {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 };
 
 /**
@@ -35,6 +36,7 @@ export const downloadJSON = (filename, data) => {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 };
 
 /**
