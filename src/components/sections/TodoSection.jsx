@@ -37,8 +37,16 @@ export function TodoSection({
   }), [calY, calM]);
 
   const MAX_HABITS = 10;
-  const habitNamesForDate = useMemo(() => resolveHabitNames(habitHistory, DEF_HABIT_NAMES, selDate), [habitHistory, selDate]);
-  const todayChecks = habitChecks[selDate] || Array(habitNamesForDate.length).fill(false);
+  const habitNamesForDate = useMemo(() => {
+    const names = resolveHabitNames(habitHistory || {}, DEF_HABIT_NAMES || [], selDate);
+    return Array.isArray(names) ? names : (DEF_HABIT_NAMES || []);
+  }, [habitHistory, selDate]);
+
+  const todayChecks = useMemo(() => {
+    const checks = habitChecks[selDate];
+    if (Array.isArray(checks)) return checks;
+    return Array(habitNamesForDate.length).fill(false);
+  }, [habitChecks, selDate, habitNamesForDate]);
 
   // Rollover logic: move unfinished todos from previous days (runs once on mount)
   const hasRolledOver = useRef(false);
@@ -98,7 +106,10 @@ export function TodoSection({
     setEditHabitIdx(null); setHabitInput("");
   };
 
-  const dayTodos = todos.filter(t => t.date === selDate);
+  const dayTodos = useMemo(() => {
+    if (!Array.isArray(todos)) return [];
+    return todos.filter(t => t && t.date === selDate);
+  }, [todos, selDate]);
   const doneCnt = dayTodos.filter(t => t.done).length;
   const addTodo = () => { 
     if (!text.trim()) return; 

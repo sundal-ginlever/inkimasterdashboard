@@ -37,7 +37,7 @@ export function useSupabaseStore(table, defaultValue, user) {
             const obj = {};
             data.forEach(row => {
               const { id, user_id, date, created_at, ...rest } = row;
-              const val = table === 'diary' 
+              const val = (table === 'diary' || table === 'd_diary')
                 ? rest.content 
                 : (rest.data !== undefined ? rest.data : rest);
               obj[date] = val;
@@ -86,7 +86,7 @@ export function useSupabaseStore(table, defaultValue, user) {
           if (dataToStore === undefined) continue; // Skip deletions, handled below
 
           let payload;
-          if (table === 'run_logs') {
+          if (table === 'run_logs' || table === 'd_run_logs') {
             payload = {
               user_id: user.id,
               date: changedDate,
@@ -94,13 +94,13 @@ export function useSupabaseStore(table, defaultValue, user) {
               distance: dataToStore.distance,
               image: dataToStore.image
             };
-          } else if (table === 'diary') {
+          } else if (table === 'diary' || table === 'd_diary') {
             payload = {
               user_id: user.id,
               date: changedDate,
               content: dataToStore
             };
-          } else if (table === 'timelogs') {
+          } else if (table === 'timelogs' || table === 'd_timelogs') {
             payload = {
               user_id: user.id,
               date: changedDate,
