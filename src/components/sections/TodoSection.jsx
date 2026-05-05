@@ -193,7 +193,23 @@ export function TodoSection({
           <WeeklyTimelog 
             selDate={selDate} 
             getLog={getLog} 
-            onCellClick={(date, hour, slot, val) => { setEditCell({ date, hour, slot }); setCellVal(val); }} 
+            onCellClick={(date, hour, slot, val) => { 
+              if (slot === "_checked") {
+                setTimelogs(p => ({
+                  ...p,
+                  [date]: {
+                    ...(p[date] || {}),
+                    [hour]: {
+                      ...(p[date]?.[hour] || { 0: "", 15: "", 30: "", 45: "" }),
+                      _checked: val
+                    }
+                  }
+                }));
+              } else {
+                setEditCell({ date, hour, slot }); 
+                setCellVal(val); 
+              }
+            }} 
           />
 
           <DailyDiary 
